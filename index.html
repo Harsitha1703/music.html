@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Music Player</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="player card">
+
+    <!-- ========== Top: small symbol + title + theme button ========== -->
+    <header class="top">
+      <h1>
+        <!-- kutty music symbol -->
+        <svg class="note" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 18V6l11-2v12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="6.5" cy="18" r="3" fill="currentColor" />
+          <circle cx="17.5" cy="16" r="3" fill="currentColor" />
+        </svg>
+        My Music Player
+      </h1>
+      <button id="themeBtn" class="pill" title="Light / Dark">🌙</button>
+    </header>
+
+    <!-- ========== Now playing ========== -->
+    <section class="now">
+      <div class="cover" id="cover">
+        <img id="coverImg" alt="Song cover" />
+        <span id="coverEmoji">🎵</span>
+      </div>
+
+      <h2 id="title">Song title</h2>
+      <p id="meta" class="muted">Movie</p>
+      <span id="chip" class="chip">love</span>
+
+      <!-- Spotify player (JS inge create pannum) -->
+      <div class="sp-wrap">
+        <div id="spPlayer"></div>
+      </div>
+
+      <div class="controls">
+        <button id="shuffleBtn" class="icon" title="Shuffle (S)">🔀</button>
+        <button id="prevBtn" class="icon" title="Previous (P)">⏮</button>
+        <button id="playBtn" class="icon big" title="Play / Pause">▶</button>
+        <button id="nextBtn" class="icon" title="Next (N)">⏭</button>
+        <button id="autoBtn" class="icon" title="Autoplay next song">⏩</button>
+      </div>
+      <p id="autoLabel" class="muted small">Autoplay: ON</p>
+    </section>
+
+    <hr />
+
+    <!-- ========== Songs ========== -->
+    <section class="lib">
+      <input type="text" id="search" placeholder="🔍 Search song or movie..." />
+
+      <div class="tabs" id="tabs">
+        <button data-tab="all" class="active">All</button>
+        <button data-tab="love">💙 Love</button>
+        <button data-tab="breakup">💔 Breakup</button>
+      </div>
+
+      <p id="count" class="muted small"></p>
+      <ul id="list"></ul>
+
+      <!-- Add any Spotify song by link -->
+      <div class="add-link">
+        <input type="text" id="linkInput" placeholder="Paste Spotify song link..." />
+        <select id="linkCat">
+          <option value="love">love</option>
+          <option value="breakup">breakup</option>
+        </select>
+        <button id="linkBtn">Add</button>
+      </div>
+      <p id="linkMsg" class="muted small"></p>
+    </section>
+
+  </main>
+
+  <!-- player.js MUNNADI, Spotify API script APRAM (order mukkiyam) -->
+  <script src="player.js"></script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+</body>
+</html>
